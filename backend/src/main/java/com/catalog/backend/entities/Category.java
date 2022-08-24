@@ -2,11 +2,23 @@ package com.catalog.backend.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "tb_category")
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 7750727585883308756L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     public Category() {

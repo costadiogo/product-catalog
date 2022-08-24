@@ -1,8 +1,9 @@
 package com.catalog.backend.resources;
 
 import com.catalog.backend.entities.Category;
-import java.util.ArrayList;
+import com.catalog.backend.service.CategoryService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/v1/categories")
 public class CategoryResource {
 
+    @Autowired
+    private CategoryService service;
+
     @GetMapping("/list-all")
     public ResponseEntity<List<Category>> findAll() {
 
-        List<Category> list = new ArrayList<>(0);
+        List<Category> listAllCategories = service.findAll();
 
-        list.add(new Category(1L, "Books"));
-        list.add(new Category(2L, "Electronics"));
-
-        return ResponseEntity.ok().body(list);
+        return ResponseEntity.ok().body(listAllCategories);
     }
 }

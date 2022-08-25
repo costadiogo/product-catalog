@@ -1,5 +1,6 @@
 package com.catalog.backend.resources.exceptions;
 
+import com.catalog.backend.service.exceptions.DatabaseException;
 import com.catalog.backend.service.exceptions.IdNotFoundException;
 import java.time.Instant;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,31 @@ public class ResourceExceptionHandler {
 
         StandardError err = new StandardError();
 
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
         err.setTimestamp(Instant.now());
-        err.setStatus(HttpStatus.NOT_FOUND.value());
+        err.setStatus(status.value());
         err.setError("Resource Not Found");
         err.setMessage(ex.getMessage());
         err.setPath(request.getRequestURI());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(DatabaseException.class)
+    public ResponseEntity<StandardError> database(DatabaseException ex, HttpServletRequest request) {
+
+        StandardError err = new StandardError();
+
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Database Exception ");
+        err.setMessage(ex.getMessage());
+        err.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(status).body(err);
     }
 
 }

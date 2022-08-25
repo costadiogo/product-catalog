@@ -3,12 +3,15 @@ package com.catalog.backend.service;
 import com.catalog.backend.dto.CategoryDTO;
 import com.catalog.backend.entities.Category;
 import com.catalog.backend.repository.CategoryRepository;
+import com.catalog.backend.service.exceptions.DatabaseException;
 import com.catalog.backend.service.exceptions.IdNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,5 +71,17 @@ public class CategoryService {
 
         }
 
+    }
+
+    public void delete(Long id) {
+
+        try {
+            repository.deleteById(id);
+
+        } catch (EmptyResultDataAccessException ex) {
+            throw new IdNotFoundException("Id Not Found " + id);
+        } catch (DataIntegrityViolationException ex) {
+            throw new DatabaseException("Integrity Violation of database" + ex);
+        }
     }
 }

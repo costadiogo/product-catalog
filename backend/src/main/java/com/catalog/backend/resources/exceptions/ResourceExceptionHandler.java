@@ -1,6 +1,6 @@
 package com.catalog.backend.resources.exceptions;
 
-import com.catalog.backend.service.exceptions.EntityNotFoundException;
+import com.catalog.backend.service.exceptions.IdNotFoundException;
 import java.time.Instant;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<StandardError> idNotFound(EntityNotFoundException ex, HttpServletRequest request) {
+    @ExceptionHandler(IdNotFoundException.class)
+    public ResponseEntity<StandardError> idNotFound(IdNotFoundException ex, HttpServletRequest request) {
 
         StandardError err = new StandardError();
 

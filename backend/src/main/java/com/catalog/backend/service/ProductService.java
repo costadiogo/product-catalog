@@ -93,7 +93,7 @@ public class ProductService {
 
     /**
      * <ul>
-     *     <li>Method to associate a product with a category.</li>
+     *     <li>Method used to associate a product to one or more categories.</li>
      *     <li>Used in contracts to create and update a product.</li>
      * </ul>
      *

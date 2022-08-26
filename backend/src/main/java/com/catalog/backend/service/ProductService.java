@@ -91,6 +91,16 @@ public class ProductService {
         }
     }
 
+    /**
+     * <ul>
+     *     <li>Method to associate a product with a category.</li>
+     *     <li>Used in contracts to create and update a product.</li>
+     * </ul>
+     *
+     * @param dto
+     * @param entity
+     */
+
     private void inputDataDtoToEntity(ProductDTO dto, Product entity) {
 
         entity.setName(dto.getName());

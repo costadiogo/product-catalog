@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.catalog.backend.entities.Product;
 import com.catalog.backend.factory.Factory;
@@ -33,8 +34,24 @@ class ProductRepositoryTests {
     private ProductRepository repository;
 
     @Test
-    void shouldSavePersistWjthAutoincrementWhenIdIsNull() {
+    void findByIdShouldReturnNonEmptyOptionalWhenIdExist() {
 
+        Optional<Product> result = repository.findById(existsId);
+
+        assertTrue(result.isPresent());
+    }
+
+    @Test
+    void findByIdShouldReturnEmptyOptionalWhenIdDoesNotExist() {
+
+        Optional<Product> result = repository.findById(idNotExists);
+
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void shouldSavePersistWithAutoincrementWhenIdIsNull() {
+        
         Product product = Factory.createProduct();
 
         product.setId(null);

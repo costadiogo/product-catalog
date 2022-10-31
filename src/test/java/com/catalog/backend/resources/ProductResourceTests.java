@@ -45,7 +45,7 @@ class ProductResourceTests {
     @Test
     void findAllShouldReturnPage() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("v1/products")
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/products/list-all")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.status().isOk());
     }

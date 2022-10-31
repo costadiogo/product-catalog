@@ -10,7 +10,7 @@ name: Java CICD Flow
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 

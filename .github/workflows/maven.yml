@@ -36,17 +36,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
-    - name: Build and push
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        file: ./Dockerfile
+        image: costadiogo30/product-catalog
+        tags: latest
+        registry: docker.io
+        dockerfile: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/simplewhale:latest
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

@@ -1,9 +1,11 @@
 FROM openjdk:11
 
-ARG FILE_JAR=target/backend-0.0.1-SNAPSHOT.jar
+RUN mkdir app
 
-COPY ${FILE_JAR} app.jar
+ADD /target/${JAR_FILE} backend-0.0.1-SNAPSHOT.jar
+
+COPY ${FILE_JAR} app
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "backend-0.0.1-SNAPSHOT.jar"]

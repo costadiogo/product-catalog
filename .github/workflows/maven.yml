@@ -37,7 +37,7 @@ jobs:
         image: costadiogo30/product-catalog
         tags: latest
         registry: docker.io
-        dockerfile: Dockerfile
+        dockerfile: ./Dockerfile.yml
         push: true
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}

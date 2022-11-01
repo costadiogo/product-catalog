@@ -59,7 +59,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>product-catalog</finalName>
 	</build>
 
 </project>

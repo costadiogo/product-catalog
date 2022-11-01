@@ -1,4 +1,4 @@
 FROM openjdk:11
-ARG JAR_FILE=target/product-catalog.jar
-ADD ${JAR_FILE} product-catalog.jar
-ENTRYPOINT ["java","-jar","/product-catalog.jar"]
+ARG JAR_FILE=target/backend.jar
+ADD ${JAR_FILE} backend.jar
+ENTRYPOINT ["java","-jar","/backend.jar"]

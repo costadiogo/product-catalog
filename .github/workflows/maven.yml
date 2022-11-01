@@ -37,6 +37,7 @@ jobs:
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
+        push: true
         username: ${{ secrets.DOCKER_PASSWORD }}
         password: ${{ secrets.DOCKER_USERNAME }}
 
